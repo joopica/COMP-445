@@ -1,0 +1,338 @@
+\documentclass[10pt]{article}
+\author{Jessica Chan}
+ 
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ \usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage[variablett]{lmodern}
+
+\lstset{
+ basicstyle=\ttfamily,
+ columns=fullflexible,
+ upquote,
+ keepspaces,
+ literate={*}{{\char42}}1
+ {-}{{\char45}}1
+}
+
+\begin{document}
+ 
+\title{LING/COMP 445, LING 645\\Problem Set 1}
+\date{}
+\maketitle
+
+
+There are several types of questions below. For programming questions,
+please put your answers into a file called
+\texttt{lastname-firstname.clj}. Be careful to follow the instructions
+exactly and be sure that all of your function definitions use the
+precise names, number of inputs and input types, and output types as
+requested in each question.
+
+To do the computational problems, we recommend that you install
+Clojure on your local machine and write and debug the answers to each
+problem in a local copy of \texttt{lastname-firstname.clj}. You can
+find information about installing and using Clojure here
+\url{https://clojure.org/}.
+
+For questions involving answers in English or mathematics or a
+combination of the two, put your answers to the question in an
+\textbf{Answer} section like in the example below. You can find more
+information about \LaTeX\ here \url{https://www.latex-project.org/}.
+
+Once you have answered the question, please compile your copy of this
+\LaTeX\  into a PDF and submit (i) the compiled PDF (ii) the raw \LaTeX\
+file and (iii) your \texttt{lastname-firstname.clj} via email to
+{\em both} \href{mailto:timothy.odonnell@mcgill.ca}{timothy.odonnell@mcgill.ca} and
+\href{mailto:savanna.willerton@mail.mcgill.ca}{savanna.willerton@mail.mcgill.ca}. Please make sure all of your
+code compiles and runs, we cannot give partial credit for code that
+won't run at all.
+
+
+\hrulefill
+\paragraph{Problem 0:}
+This is an example question using some fake math like this
+$L=\sum_0^{\infty} \mathcal{G} \delta_x$.
+
+\paragraph{Answer 0:}  $L=\sum_0^{\infty} \mathcal{G} \delta_x$.
+
+
+\hrulefill
+\paragraph{Problem 1:}
+Write a procedure called \texttt{abs} that takes in a number, and
+computes the absolute value of the number. It should do this by
+finding the square root of the square of the argument. (Note: you
+should use the \texttt{Math/sqrt} procedure built in to Clojure, which
+returns the square root of a number.)
+
+\paragraph{Answer 1:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 2:}
+In both of the following procedure definitions, there are one or more errors of
+some kind. Explain what's wrong and why, and fix it:
+
+\begin{lstlisting}
+(defn take-square
+  (* x x))
+\end{lstlisting}
+
+\begin{lstlisting}
+(defn sum-of-squares [(take-square x) (take-square y)]
+  (+ (take-square x) (take-square y)))
+\end{lstlisting}
+
+\paragraph{Answer 2:} The function abs is missing the argument \texttt{[x]} that should be passed.
+ The function sum-of-squares' arguments should not have the take-squared function called on them.
+ They should look like this instead: \texttt{[x y]}
+
+\hrulefill
+\paragraph{Problem 3:}
+The expression \texttt{(+ 11 2)} has the value \texttt{13}. Write four
+other different Clojure expressions whose values are also the number
+\texttt{13}.  Using \texttt{def} name these expressions
+\texttt{exp-13-1}, \texttt{exp-13-2}, \texttt{exp-13-3}, and
+\texttt{exp-13-4}.
+
+\paragraph{Answer 3:} 
+\begin{lstlisting}
+(def exp-13-1 []
+	(* 13 1))
+(def exp-13-2 []
+	(+ 3 10))
+(def exp-13-3 []
+	(+ (expt 3 2) 4))
+(def exp-13-4 []
+	(- 15 2))
+\end{lstlisting}
+
+\hrulefill
+\paragraph{Problem 4:}
+  Write a procedure, called \texttt{third}, that selects the third
+  element of a list. For example, given the list \texttt{'(4 5 6)},
+  third should return the number \texttt{6}.
+
+\paragraph{Answer 4:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 5:}
+Write a procedure, called \texttt{compose}, that takes two one-place
+functions \texttt{f} and \texttt{g} as arguments. It should return a
+new function, the composition of its input functions, which computes
+\texttt{f(g(x))} when passed the argument \texttt{x}. For example, the
+function \texttt{Math/sqrt} (built in to Clojure from Java) takes the
+square root of a number, and the function \texttt{Math/abs} (also
+built in to Clojure) takes the absolute value of a number. If we make
+these functions Clojure native functions using \texttt{fn}, then
+\texttt{((compose Math/sqrt Math/abs) -36)} should return \texttt{6},
+because the square root of the absolute value of \texttt{-36} equals
+\texttt{6}.
+
+\begin{lstlisting}
+(defn sqrt [x] (Math/sqrt x))
+(defn abs [x] (Math/abs x))
+((compose sqrt abs) -36)
+\end{lstlisting}
+
+\paragraph{Answer 5:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 6:}
+  Write a procedure \texttt{first-two} that takes a list as its argument,
+  returning a two element list containing the first two elements of
+  the argument. For example, given the list \texttt{'(4 5 6)},
+  \texttt{first-two} should return \texttt{'(4 5)}.
+
+\paragraph{Answer 6:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 7:}
+Write a procedure \texttt{remove-second} that takes a list, and
+returns the same list with the second value removed. For example,
+given \texttt{(list 3 1 4)}, \texttt{remove-second} should return
+\texttt{(list 3 4)}
+
+\paragraph{Answer 7:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 8:}
+  Write a procedure \texttt{add-to-end} that takes in two arguments: a
+  list \texttt{l} and a value \texttt{x}. It should return a new list
+  which is the same as \texttt{l}, except that it has \texttt{x} as
+  its final element. For example, \texttt{(add-to-end (list 5 6 4) 0)}
+  should return \texttt{(list 5 6 4 0)}.
+
+\paragraph{Answer 8:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 9:}
+  Write a procedure, called \texttt{reverse}, that takes in a list, and returns
+  the reverse of the list. For example, if it takes in \texttt{'(a b c)}, it
+  will output \texttt{'(c b a)}.
+
+\paragraph{Answer 9:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 10:}
+  Write a procedure, called \texttt{count-to-1}, that takes a positive
+  integer \texttt{n}, and returns a list of the integers counting down
+  from \texttt{n} to \texttt{1}. For example, given input \texttt{3},
+  it will return \texttt{(list 3 2 1)}.
+
+\paragraph{Answer 10:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 11:}
+  Write a procedure, called \texttt{count-to-n}, that takes a positive
+  integer \texttt{n}, and returns a list of the integers from
+  \texttt{1} to \texttt{n}. For example, given input \texttt{3}, it
+  will return \texttt{(list 1 2 3)}. Hint: Use the procedures
+  \texttt{reverse} and \texttt{count-to-1} that you wrote in the
+  previous problems.
+
+\paragraph{Answer 11:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 12:}
+  Write a procedure, called \texttt{get-max}, that takes a list of numbers, and
+  returns the maximum value.
+
+\paragraph{Answer 12:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 13:}
+  Write a procedure, called \texttt{greater-than-five?}, that takes a
+  list of numbers, and replaces each number with \texttt{true} if the
+  number is greater than \texttt{5}, and \texttt{false} otherwise. For
+  example, given input \texttt{(list 5 4 7)}, it will return
+  \texttt{(list false false true)}. Hint: Use the function
+  \texttt{map} that we discussed in class.
+
+\paragraph{Answer 13:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 14:}
+Write a procedure, called \texttt{concat-three}, that takes three
+sequences (represented as lists), \texttt{x}, \texttt{y}, and
+\texttt{z}, and returns the concatenation of the three sequences. For
+example, given the sequences \texttt{(list 'a 'b)}, \texttt{(list 'b
+  'c)}, and \texttt{(list 'd 'e)}, the procedure should return
+\texttt{(list 'a 'b 'b 'c 'd 'e)}.
+
+\paragraph{Answer 13:} Please put your answer in \texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 15:}
+Write a procedure, called \texttt{sequence-to-power}, that takes a
+sequence (represented as a list) \texttt{x}, and a positive integer
+\texttt{n}, and returns the sequence \texttt{x}$^\texttt{n}$. For
+example, given the sequence \texttt{(list 'a 'b)} and the number
+\texttt{3}, the procedure should return \texttt{(list 'a 'b 'a 'b 'a
+  'b)}.
+
+\paragraph{Answer 15:} Please put your answer in
+\texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 16:}
+Define $L$ as a language containing a single sequence,
+$L={a}$. Write a procedure \texttt{in-L?} that takes a sequence
+(represented as a list), and decides if it is a member of the language
+$L^*$. That is, given a sequence $x$, the procedure should return
+\texttt{true} if and only if $x$ is a member of $L^*$, and
+\texttt{false} otherwise.
+
+\paragraph{Answer 16:} Please put your answer in
+\texttt{firstname-lastname.clj}.
+
+\hrulefill
+\paragraph{Problem 17:}
+Let $A$ and $B$ be languages. We'll use $\textsc{concat}(A,B)$ to
+denote the concatenation of $A$ and $B$, in that order. Find an
+example of languages $A$ and $B$ such that
+$\textsc{concat}(A,B)=\textsc{concat}(B,A)$.
+
+\paragraph{Answer 17:} 
+
+Let $A = {a, aa}$ and $B = {aaaa, aaa}$.
+Then $AB = {aaaaa, aaaa, aaaaaa}$.
+Which is equal to $BA = {aaaaa, aaaa, aaaaaa}$.
+
+\hrulefill
+\paragraph{Problem 18:}
+Let $A$ and $B$ be languages. Find an example of languages $A$ and $B$
+such that $\textsc{concat}(A,B)$ does not equal $\textsc{concat}(B,A)$
+
+\paragraph{Answer 18:} 
+Let $A = {a, ab}$ and $B = {b, ba}$.
+Then $AB = {ab, aba, abb, abba}$.
+Which is not equal to $BA = {ba, bab, baa, baab} $.
+
+\hrulefill
+\paragraph{Problem 19:}
+Find an example of a language $L$ such that $L=L^2$,
+i.e. $L=\textsc{concat}(L,L)$.
+
+\paragraph{Answer 19:} 
+Let $L = {a, ab, aba}$. \\* 
+$ L^2 = {aa, aab, aaba, abab, ababa, abaaba}$ and \\*
+$LL = {aa, aab, aaba, abab, ababa, abaaba}$. 
+We can see the two are equal.
+
+\hrulefill
+\paragraph{Problem 20:}
+Argue that the intersection of two languages $L$ and $L'$ is always
+contained in $L$.
+
+\paragraph{Answer 20:} 
+The intersection of languages $L$ and $L'$ is a subset equal to $L \cap L'$ .
+Breaking this down, we know that any element $x \in L \cap L'$ must belong in both sets by definition of an intersection.
+So, all elements $x \in L \cap L'$ will also be in $L$.
+
+\hrulefill
+\paragraph{Problem 21:}
+Let $L_1$, $L_2$, $L_3$, and $L_4$ be languages. Argue that the union
+of Cartesian products $(L_1 \times L_3) \cup (L_2 \times L_4)$ is
+always contained in the Cartesian product of unions
+$(L_1 \cup L_2) \times (L_3 \cup L_4)$.
+$L' \times L$
+\paragraph{Answer 21:} 
+We know that any elements in the arbitrary pair $(x, y) \in (L_1 \times L_3) \cup (L_2 \times L_4)$ are either a Cartesian product of $(L_1 \times L_3) , (L_2 \times L_4)$ or both by the definition of union.
+\\
+
+\\
+From $(L_1 \cup L_2) \times (L_3 \cup L_4)$ we can deduce that any pair $(m,n) \in (L_1 \cup L_2) \times (L_3 \cup L_4)$ will be a cross product of $m \in (L_1 \cup L_2)$ and $n \in (L_3 \cup L_4)$. 
+\\
+\\
+So, we can see that the possible cross products of this union are $(m, n) \in (L_1 \times L_3) \cup (L_2 \times L_3) \cup (L_1 \times L_4) \cup (L_2 \times L_4)$ by the distributive property of union.
+\\
+\\
+We can see that if $(x,y) \in (L_1 \times L_3) \cup (L_2 \times L_4)$, then $(x, y) \in (L_1 \times L_3) \cup (L_2 \times L_3) \cup (L_1 \times L_4) \cup (L_2 \times L_4)$ also since the former is a subset of the latter. Thus the Union of Cartesian products is always in a Cartesian product of Unions.
+
+\hrulefill
+\paragraph{Problem 22:}
+Let $L$ and $L'$ be finite languages. Show that the number of elements
+in the Cartesian product $L \times L'$ is always equal to the number
+of elements in $L' \times L$.
+
+\paragraph{Answer 22:} We know that the number of elements in some Cartesian product of $(A \times B)$ is given by $|A| \bullet |B|$. So, by the commutative property of multiplication, we know that the number of elements in $L \times L'$ is equal to the number of elements in $L' \times L$, since $|L| \bullet |L'| = |L'| \bullet |L|$
+
+\hrulefill
+\paragraph{Problem 23:}
+
+Suppose that the concatenation of a language L is equal to itself:
+$\texttt{concat}(L,L) = L$. Show that $L$ is either the empty set or
+an infinite language. (Remember that the empty set contains the null
+string.)
+
+\paragraph{Answer 23:} 
+Let $L$ be the empty set. We know that concatenating the empty set to the empty set will yield the empty set since sets are unique.
+\\
+\\ 
+Now, let $I$ be the infinite set ${ab}^\infty$. Concatenating this infinite set to itself will yield more of the same pattern ab, however any "new" iterations of this repetition will already be a part of the original infinite set. Since sets are unique and any "new patterns" concatenated are mere pointers to the original instantiation, nothing new is added.  Therefore, concatenation of $I$ to $I$ yields itself. 
+
+\end{document}
